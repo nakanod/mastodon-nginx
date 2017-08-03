@@ -7,7 +7,7 @@ services:
     network_mode: "host"
     env_file:
       - .env
-    command: /bin/sh -c "envsubst '$$SERVER_NAME $$APP_HOST $$STREAMING_HOST' < /etc/nginx/conf.d/nginx_mastodon.conf.template > /etc/nginx/conf.d/nginx_mastodon.conf && nginx -g 'daemon off;'"
+    command: /bin/sh -c "envsubst '$$SERVER_NAME $$APP_HOST $$STREAMING_HOST $$LOAD_BALANCER_IP' < /etc/nginx/conf.d/nginx_mastodon.conf.template > /etc/nginx/conf.d/nginx_mastodon.conf && nginx -g 'daemon off;'"
     ports:
       - "80:80"
     volumes:
